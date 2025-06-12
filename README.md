@@ -53,34 +53,6 @@ npx cypress run
 
 Os testes estão localizados na pasta `cypress/e2e/` e cobrem os seguintes cenários:
 
-### Login com Sucesso
-
-Verifica se um usuário válido consegue acessar o painel:
-
-```javascript
-it('Login success', () => {
-  cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-  cy.get('input[name=username]').type('Admin')
-  cy.get('input[name=password]').type('admin123')
-  cy.get('button[type=submit]').click()
-  cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
-  cy.get('.oxd-text--h6').contains('Dashboard')
-})
-```
-
-### Login com Falha
-
-Verifica se a aplicação exibe um alerta de erro ao tentar logar com credenciais inválidas:
-
-```javascript
-it('Login Fail', () => {
-  cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-  cy.get('input[name=username]').type('teste')
-  cy.get('input[name=password]').type('teste')
-  cy.get('.oxd-button').click()
-  cy.get('.oxd-alert--error')
-})
-```
 
 ## Contribuição
 
