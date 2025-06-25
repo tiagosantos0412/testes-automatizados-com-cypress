@@ -16,6 +16,9 @@ describe('Orange HRM Tests', () => {
     dateCloseButton: '.--close',
     countrySelection: '.oxd-select-text-input',
     submitSaveButton: "[type='submit']",
+    selectInput: '.oxd-select-text-input',
+    selectDropdown: '.oxd-select-dropdown',
+
   }
 
   it.only('User Info Update - Success', () => {
@@ -33,6 +36,12 @@ describe('Orange HRM Tests', () => {
     cy.get(selectorList.genericField).eq(5).clear().type('drive125444')
     cy.get(selectorList.dateField).eq(0).clear().type('2025-25-06')
     cy.get(selectorList.dateCloseButton).click()
+    cy.get(selectorList.selectInput).eq(0).click()
+    cy.get(selectorList.selectDropdown).should('be.visible')
+    cy.contains('Austrian').click()
+    cy.get(selectorList.selectInput).eq(1).click()
+    cy.get(selectorList.selectDropdown).should('be.visible')
+    cy.contains('Married').click()
     cy.get(selectorList.submitSaveButton).eq(0).click()
     cy.get('body').should('contain', 'Successfully Updated')
     
