@@ -8,6 +8,11 @@ const loginPage = new LoginPage()
 const dashboard = new Dashboard()
 const navBar = new NavBar()
 const myInfoPage = new MyInfoPage()
+// Load Chance
+const Chance = require('chance');
+// Instantiate Chance so it can be used
+var chance = new Chance();
+
 
 describe('Orange HRM Tests', () => {
   it('User Info Update - Success', () => {
@@ -15,8 +20,8 @@ describe('Orange HRM Tests', () => {
     loginPage.loginWithAnyUser(userData.userSuccess.userName, userData.userSuccess.password)
     dashboard.checkDashboardPage()
     navBar.accesMyInfoModule()
-    myInfoPage.personalFullName('João', 'Carlos', 'da Silva')
-    myInfoPage.personalEmployeeDetails(2346, 'almox2', 'crp2365', '2027-06-23')
+    myInfoPage.personalFullName(chance.first(), chance.name({ middle_initial: true }), chance.last())
+    myInfoPage.personalEmployeeDetails(chance.integer({ min: 0, max: 300 }), chance.string({ length: 6 }), chance.bb_pin(), '2027-06-23')
     myInfoPage.personalStatus()
     myInfoPage.saveForm()
     
