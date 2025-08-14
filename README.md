@@ -52,8 +52,3 @@ npx cypress run
 ## Estrutura dos Testes
 
 Os testes estão localizados na pasta `cypress/e2e/` e cobrem os seguintes cenários:
-
-
-## Contribuição
-
-Sinta-se à vontade para abrir issues ou enviar pull requests com melhorias!
